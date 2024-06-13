@@ -29,7 +29,7 @@ const InputData = ({ open, setOpen, editData, setEditData }) => {
             alert("Please fill all the fields");
         }
         else {
-            const res = await axios.post("http://localhost:3000/api/v2/create-task", Data, {
+            const res = await axios.post("https://todo-app-61iu.onrender.com/api/v2/create-task", Data, {
                 headers
             });
 
@@ -44,7 +44,7 @@ const InputData = ({ open, setOpen, editData, setEditData }) => {
             alert("Please fill all the fields");
         }
         else {
-            const res = await axios.put(`http://localhost:3000/api/v2/update-task/${editData.id}`, Data, {
+            const res = await axios.put(`https://todo-app-61iu.onrender.com/api/v2/update-task/${editData.id}`, Data, {
                 headers
             });
             setEditData({ id: "", title: "", description: "" });

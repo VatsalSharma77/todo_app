@@ -28,11 +28,11 @@ const SignUp = () => {
                 alert('All fields are required')
             }
             else {
-                const res = await axios.post("http://localhost:3000/api/v1/sign-in",
+                const res = await axios.post("https://todo-app-61iu.onrender.com/api/v1/sign-in",
                     data
                 );
                 setData({ username: '', email: '', password: '' })
-
+                console.log(res.data)
                 navigate('/login')
 
             }

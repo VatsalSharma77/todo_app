@@ -18,7 +18,7 @@ function App() {
     if (localStorage.getItem('id') && localStorage.getItem('token')) {
       dispatch(authActions.login());
     }
-    if (isLoggedIn === false) {
+    else if (isLoggedIn === false) {
       navigate('/signup')
     }
   }, [])

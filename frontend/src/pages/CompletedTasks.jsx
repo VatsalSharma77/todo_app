@@ -14,7 +14,7 @@ const CompletedTasks = () => {
   }
   const fetchData = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/v2/get-complete-tasks", {
+      const res = await axios.get("https://todo-app-61iu.onrender.com/api/v2/get-complete-tasks", {
         headers
       });
 

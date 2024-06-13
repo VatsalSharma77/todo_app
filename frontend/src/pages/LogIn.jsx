@@ -29,10 +29,11 @@ const LogIn = () => {
                 alert('All fields are required')
             }
             else {
-                const res = await axios.post("http://localhost:3000/api/v1/log-in",
+                const res = await axios.post("https://todo-app-61iu.onrender.com/api/v1/log-in",
                     data
                 );
                 setData({ username: '', password: '' })
+                console.log(res.data)
                 localStorage.setItem('id', res.data.id)
                 localStorage.setItem('token', res.data.token)
                 dispatch(authActions.login())

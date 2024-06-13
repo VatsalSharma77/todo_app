@@ -54,12 +54,12 @@ const Sidebar = () => {
 
     const fetchData = async () => {
         try {
-            const res = await axios.get("http://localhost:3000/api/v2/get-tasks", {
+            const res = await axios.get("https://todo-app-61iu.onrender.com/api/v2/get-tasks", {
                 headers
             });
 
             setData(res.data.data)
-
+            console.log(res)
         } catch (error) {
             console.log(error)
         }

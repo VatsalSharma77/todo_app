@@ -11,7 +11,7 @@ const Cards = ({ home, setOpen, data, setEditData }) => {
     }
     const handleCompleteTask = async (id) => {
         try {
-            const res = await axios.put(`http://localhost:3000/api/v2/update-complete-task/${id}`, {}, {
+            const res = await axios.put(`https://todo-app-61iu.onrender.com/api/v2/update-complete-task/${id}`, {}, {
                 headers
             });
             console.log(res.data);
@@ -22,7 +22,7 @@ const Cards = ({ home, setOpen, data, setEditData }) => {
 
     const handleImportant = async (id) => {
         try {
-            const res = await axios.put(`http://localhost:3000/api/v2/update-imp-task/${id}`, {}, {
+            const res = await axios.put(`https://todo-app-61iu.onrender.com/api/v2/update-imp-task/${id}`, {}, {
                 headers
             });
             console.log(res.data);
@@ -33,7 +33,7 @@ const Cards = ({ home, setOpen, data, setEditData }) => {
 
     const handleDelete = async (id) => {
         try {
-            const res = await axios.delete(`http://localhost:3000/api/v2/delete-task/${id}`, {
+            const res = await axios.delete(`https://todo-app-61iu.onrender.com/api/v2/delete-task/${id}`, {
                 headers
             });
             console.log(res.data);
