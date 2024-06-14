@@ -100,7 +100,7 @@ router.put("/update-complete-task/:id", auth, async (req, res) => {
 router.get("/get-imp-tasks", auth, async (req, res) => {
   try {
     const { id } = req.headers;
-    const Data = await User.findOne(id).populate({
+    const Data = await User.findById(id).populate({
       path: "tasks",
       match: { important: true },
       options: { sort: { createdAt: -1 } },
@@ -118,7 +118,7 @@ router.get("/get-imp-tasks", auth, async (req, res) => {
 router.get("/get-complete-tasks", auth, async (req, res) => {
   try {
     const { id } = req.headers;
-    const Data = await User.findOne(id).populate({
+    const Data = await User.findById(id).populate({
       path: "tasks",
       match: { complete: true },
       options: { sort: { createdAt: -1 } },
@@ -136,7 +136,7 @@ router.get("/get-complete-tasks", auth, async (req, res) => {
 router.get("/get-incomplete-tasks", auth, async (req, res) => {
     try {
       const { id } = req.headers;
-      const Data = await User.findOne(id).populate({
+      const Data = await User.findById(id).populate({
         path: "tasks",
         match: { complete: false },
         options: { sort: { createdAt: -1 } },
