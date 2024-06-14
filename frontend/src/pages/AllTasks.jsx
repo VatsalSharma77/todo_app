@@ -16,8 +16,7 @@ const AllTasks = () => {
     if (localStorage.getItem("token") && localStorage.getItem("id")) {
       fetchData();
     }
-
-  }, [])
+  }, [Data])
 
   const headers = {
     id: localStorage.getItem("id"),
@@ -25,11 +24,13 @@ const AllTasks = () => {
   }
   const fetchData = async () => {
     try {
-      const res = await axios.get("https://todo-app-61iu.onrender.com/api/v2/get-tasks", {
+      const res = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}api/v2/get-tasks`, {
         headers
       });
 
       setData(res.data.data)
+      console.log(res.data.data)
+      
 
     } catch (error) {
       console.log(error)

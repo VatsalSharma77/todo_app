@@ -29,7 +29,7 @@ const LogIn = () => {
                 alert('All fields are required')
             }
             else {
-                const res = await axios.post("https://todo-app-61iu.onrender.com/api/v1/log-in",
+                const res = await axios.post(`${import.meta.env.VITE_APP_BACKEND_URL}api/v1/log-in`,
                     data
                 );
                 setData({ username: '', password: '' })

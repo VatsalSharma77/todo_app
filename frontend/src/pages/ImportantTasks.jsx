@@ -14,12 +14,12 @@ const ImportantTasks = () => {
   }
   const fetchData = async () => {
     try {
-      const res = await axios.get("https://todo-app-61iu.onrender.com/api/v2/get-imp-tasks", {
+      const res = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}api/v2/get-imp-tasks`, {
         headers
       });
 
       setData(res.data.data)
-
+      console.log(res.data)
     } catch (error) {
       console.log(error)
     }

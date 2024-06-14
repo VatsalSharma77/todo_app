@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import Cards from '../components/Home/Cards'
 import axios from 'axios';
 
@@ -14,7 +14,7 @@ const CompletedTasks = () => {
   }
   const fetchData = async () => {
     try {
-      const res = await axios.get("https://todo-app-61iu.onrender.com/api/v2/get-complete-tasks", {
+      const res = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}api/v2/get-complete-tasks`, {
         headers
       });
 

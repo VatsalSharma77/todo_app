@@ -14,7 +14,7 @@ const UnCompletedTasks = () => {
   }
   const fetchData = async () => {
     try {
-      const res = await axios.get("https://todo-app-61iu.onrender.com/api/v2/get-incomplete-tasks", {
+      const res = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}api/v2/get-incomplete-tasks`, {
         headers
       });
 

@@ -1,5 +1,6 @@
 import axios from "axios";
-import { FaRegHeart, FaHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
+import { CiHeart } from "react-icons/ci";
 import { LiaEdit } from "react-icons/lia";
 import { MdDelete } from "react-icons/md";
 import { MdNoteAdd } from "react-icons/md";
@@ -9,12 +10,15 @@ const Cards = ({ home, setOpen, data, setEditData }) => {
         id: localStorage.getItem("id"),
         authorization: `Bearer ${localStorage.getItem("token")}`,
     }
+
+
+
     const handleCompleteTask = async (id) => {
         try {
-            const res = await axios.put(`https://todo-app-61iu.onrender.com/api/v2/update-complete-task/${id}`, {}, {
+            const res = await axios.put(`${import.meta.env.VITE_APP_BACKEND_URL}api/v2/update-complete-task/${id}`, {}, {
                 headers
             });
-            console.log(res.data);
+            alert(res.data.message);
         } catch (error) {
             console.log(error);
         }
@@ -22,7 +26,7 @@ const Cards = ({ home, setOpen, data, setEditData }) => {
 
     const handleImportant = async (id) => {
         try {
-            const res = await axios.put(`https://todo-app-61iu.onrender.com/api/v2/update-imp-task/${id}`, {}, {
+            const res = await axios.put(`${import.meta.env.VITE_APP_BACKEND_URL}api/v2/update-imp-task/${id}`, {}, {
                 headers
             });
             console.log(res.data);
@@ -33,7 +37,7 @@ const Cards = ({ home, setOpen, data, setEditData }) => {
 
     const handleDelete = async (id) => {
         try {
-            const res = await axios.delete(`https://todo-app-61iu.onrender.com/api/v2/delete-task/${id}`, {
+            const res = await axios.delete(`${import.meta.env.VITE_APP_BACKEND_URL}api/v2/delete-task/${id}`, {
                 headers
             });
             console.log(res.data);
@@ -53,18 +57,19 @@ const Cards = ({ home, setOpen, data, setEditData }) => {
             {data && data.map((item, index) => (
                 <div className=' flex flex-col justify-between bg-gray-800 rounded-sm p-4' key={index}>
                     <div >
-                        <h3 className='text-xl font-semibold'></h3>
-                        <p className='text-gray-300 my-2'></p>
+                        <h3 className='text-xl font-semibold'>{item.title}</h3>
+                        <p className='text-gray-300 my-2'>{item.description}</p>
 
                     </div>
                     <div className='mt-4 w-full flex items-center'>
-                        <button className={`${item.complete === false ? "bg-red-400" : "bg-green-700"} bg-red-400 p-2 rounded w-3/6`}
+                        <button className={`${item.complete === true ? "bg-green-700" : "bg-red-700"}  p-2 rounded w-3/6`}
                             onClick={() => handleCompleteTask(item._id)}
                         >{item.complete === true ? "Completed" : "In Completed"}</button>
                         <div className="text-white p-2 w-3/6 text-2xl flex justify-around" >
                             <button onClick={() => handleImportant(item._id)}>
                                 {
-                                    item.important === false ? <FaRegHeart /> : <FaHeart className="text-red-500" />
+                                    item.important === false ? (<CiHeart />
+                                    ) : (<FaHeart className="text-red-500" />)
                                 }
                             </button>
                             {home !== false && <button onClick={() => handleEdit(item._id, item.title, item.description)}>

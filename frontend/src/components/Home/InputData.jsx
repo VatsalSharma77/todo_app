@@ -29,7 +29,7 @@ const InputData = ({ open, setOpen, editData, setEditData }) => {
             alert("Please fill all the fields");
         }
         else {
-            const res = await axios.post("https://todo-app-61iu.onrender.com/api/v2/create-task", Data, {
+            const res = await axios.post(`${import.meta.env.VITE_APP_BACKEND_URL}api/v2/create-task`, Data, {
                 headers
             });
 
@@ -44,7 +44,7 @@ const InputData = ({ open, setOpen, editData, setEditData }) => {
             alert("Please fill all the fields");
         }
         else {
-            const res = await axios.put(`https://todo-app-61iu.onrender.com/api/v2/update-task/${editData.id}`, Data, {
+            const res = await axios.put(`${import.meta.env.VITE_APP_BACKEND_URL}api/v2/update-task/${editData.id}`, Data, {
                 headers
             });
             setEditData({ id: "", title: "", description: "" });
@@ -76,12 +76,12 @@ const InputData = ({ open, setOpen, editData, setEditData }) => {
                         value={Data.title}
                         onChange={change}
                     />
-                    <textarea name="desc" placeholder="Description..." className="px-3 py-2 rounded w-full my-3 bg-gray-700"
+                    <textarea name="description" placeholder="Description..." className="px-3 py-2 rounded w-full my-3 bg-gray-700"
                         rows="10"
                         cols="10"
                         value={Data.description}
                         onChange={change}
-                    ></textarea>
+                    />
                     {editData.id === "" ? (<button className="px-3 py-2 rounded  bg-blue-500 text-black text-xl font-semibold "
                         onClick={submitData}>Submit</button>) : (<button className="px-3 py-2 rounded  bg-blue-500 text-black text-xl font-semibold "
                             onClick={UpdateTask}>Update</button>)}
